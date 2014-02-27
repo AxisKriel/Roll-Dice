@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TShockAPI;
 using Terraria;
+using TerrariaApi.Server;
+using TShockAPI;
 
 namespace RollDice
 {
-	[APIVersion(1, 11)]
+	[ApiVersion(1, 15)]
 	public class RollDice : TerrariaPlugin
 	{
 		public override Version Version
 		{
-			get { return new Version(1, 0); }
+			get { return new Version(2, 1); }
 		}
 
 		public override string Name
@@ -22,7 +23,7 @@ namespace RollDice
 
 		public override string Author
 		{
-			get { return "nicatronTg"; }
+			get { return "nicatronTg, updated by Enerdy"; }
 		}
 
 		public override string Description
@@ -39,7 +40,7 @@ namespace RollDice
 			TShockAPI.Commands.ChatCommands.Add(new Command("roll", Roll, "roll"));
 		}
 
-		public void Roll(CommandArgs args)
+		private static void Roll(CommandArgs args)
 		{
 			Random r = new Random();
 			TShockAPI.TShock.Utils.Broadcast(args.Player.Name + " rolls a " + r.Next(0, 100), Color.Yellow);
