@@ -13,7 +13,7 @@ namespace RollDice
 	{
 		public override Version Version
 		{
-			get { return new Version(2, 1); }
+			get { return new Version(2, 2); }
 		}
 
 		public override string Name
@@ -43,7 +43,7 @@ namespace RollDice
 		private static void Roll(CommandArgs args)
 		{
 			Random r = new Random();
-			TShockAPI.TShock.Utils.Broadcast(args.Player.Name + " rolls a " + r.Next(0, 100), Color.Yellow);
+			TSPlayer.All.SendInfoMessage(args.Player.Name + " rolls a " + r.Next(0, 100));
 		}
 	}
 }
