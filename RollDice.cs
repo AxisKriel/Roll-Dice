@@ -8,19 +8,9 @@ using TShockAPI;
 
 namespace RollDice
 {
-	[ApiVersion(1, 15)]
+	[ApiVersion(1, 16)]
 	public class RollDice : TerrariaPlugin
 	{
-		public override Version Version
-		{
-			get { return new Version(2, 2); }
-		}
-
-		public override string Name
-		{
-			get { return "Dice Roll"; }
-		}
-
 		public override string Author
 		{
 			get { return "nicatronTg, updated by Enerdy"; }
@@ -31,19 +21,31 @@ namespace RollDice
 			get { return "Roll the magical dice of Random"; }
 		}
 
-		public RollDice(Main game) : base(game)
+		public override string Name
 		{
+			get { return "Dice Roll"; }
+		}
+
+		public override Version Version
+		{
+			get { return new Version(2, 3); }
+		}
+
+		public RollDice(Main game)
+			: base(game)
+		{
+
 		}
 
 		public override void Initialize()
 		{
-			TShockAPI.Commands.ChatCommands.Add(new Command("roll", Roll, "roll"));
+			Commands.ChatCommands.Add(new Command("roll", Roll, "roll"));
 		}
 
-		private static void Roll(CommandArgs args)
+		void Roll(CommandArgs args)
 		{
 			Random r = new Random();
-			TSPlayer.All.SendInfoMessage(args.Player.Name + " rolls a " + r.Next(0, 100));
+			TSPlayer.All.SendInfoMessage(args.Player.Name + " rolls a " + r.Next(1, 101));
 		}
 	}
 }
